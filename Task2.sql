@@ -87,4 +87,20 @@ INSERT INTO loans (id_reader, book_isbn, date_of_issue, planned_return_date, act
     (1, '978-5-389-03713-7', '2026-11-05', '2026-11-19', NULL), --вторая выдача Анны
     (2, '978-5-04-116716-3', '2026-11-06', '2026-11-20', '2026-11-10'); --вторая выдача Ивана
 
+--Изменение и удаление данных--
+--замена номера телефона
+UPDATE readers
+SET telephone = '+7-900-000-88-77'
+WHERE reader_id =4;
 
+--закрытие активной выдачи
+UPDATE loans
+SET actual_return_date = '2026-11-12'
+WHERE id_issue = 1;
+
+--добавление тестового читателя
+INSERT INTO readers (full_name, telephone)
+    VALUES  ('Тестовый читатель', '+7-901-110-11-10');
+
+DELETE FROM readers
+WHERE reader_id = 5;
